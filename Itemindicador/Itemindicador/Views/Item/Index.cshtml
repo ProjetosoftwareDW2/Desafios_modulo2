@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Itemindicador.Models.ItemIndicador>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Item Indicador</h2>
+
+<!--DROPDOWNLIST REFERENTE AOS INDICADORES AQUI-->
+@using (Html.BeginForm("Index", "Item", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-8">
+            Escolha o indicador:
+            @* Passando o Nome da ViewBag *@
+            @Html.DropDownList("Indicador_Id", String.Empty)
+        </div>
+    </div>
+}
+
+<div class="row">
+
+    <div class="col-md-6">
+        <!--cadastro-->
+        @Html.Partial("_Create")
+    </div><!--fim do cadastro-->
+
+    <div class="col-md-6">
+        <!--Lista-->
+
+        <p>
+            <h4>Itens Indicadores Cadastrados</h4>
+            <hr />
+        </p>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div> <!--fim da lista-->
+
+</div>

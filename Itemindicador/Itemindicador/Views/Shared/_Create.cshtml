@@ -1,0 +1,40 @@
+﻿
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Cadastrar Item Indicador</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2"> Nome </label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value="">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Nome" data-valmsg-replace="true"></span>
+            </div> 
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Descrição </label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Descricao" name="Descricao" type="text" value="">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Descricao" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
