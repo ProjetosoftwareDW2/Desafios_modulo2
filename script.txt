@@ -1,0 +1,29 @@
+CREATE DATABASE projetowebdb;
+
+USE projetowebdb;
+
+CREATE TABLE Indicador(
+	
+	ID_Indicador INT,
+
+        Nome VARCHAR(45) NOT NULL,
+
+        PRIMARY KEY(ID_Indicador)
+);
+
+
+
+CREATE TABLE Projetoweb(
+	
+	ID INT NOT NULL AUTO_INCREMENT,
+
+	Nome VARCHAR(45)NOT NULL,
+
+	Descricao TEXT NOT NULL,
+
+        ID_Indicador INT,
+
+	PRIMARY KEY (ID),
+
+	FOREIGN KEY (ID_Indicador) REFERENCES Indicador(ID_Indicador)
+);
